@@ -1,7 +1,7 @@
 import re
 import random
 
-def dice_bot(msg, rep):
+def dice_bot(msg, reps):
     pattern = re.compile('\d+d\d+', re.I)
     m = pattern.match(msg)
     if not m == None:
@@ -11,9 +11,10 @@ def dice_bot(msg, rep):
         print('dice_bot：result：', m)
         print('dice_bot：list：', rep)
         print('dice_bot：total：', sum(rep))
+        reps = rep, sum(rep)
     else:
-        rep = None
-    return rep
+        reps = None
+    return reps
 
 def dice_bot_random(dice, rep):
     rep = []
@@ -28,11 +29,11 @@ def dice_bot_random(dice, rep):
         rep.append(r)
     return rep
 
-rep = None
+reps = None
 while True:
     msg = input('MSG:')
     if msg == 'q':
         break
     else:
-        rep = dice_bot(msg, rep)
-        print('main：', rep)
+        reps = dice_bot(msg, reps)
+        print('main：', reps)
