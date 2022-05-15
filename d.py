@@ -31,9 +31,16 @@ def dice_bot_random(dice, rep):
 
 reps = None
 while True:
-    msg = input('MSG:')
+    msg_all = []
+    message = input('MSG:')
+    msg_all = message.split(' ',1)
+    msg = msg_all[0]
     if msg == 'q':
         break
     else:
-        reps = dice_bot(msg, reps)
-        print('main：', reps)
+        if len(msg_all) == 1:
+            reps = dice_bot(msg, reps)
+            print('main：', reps)
+        else:
+            reps = dice_bot(msg, reps)
+            print('main：', reps, msg_all[1])
